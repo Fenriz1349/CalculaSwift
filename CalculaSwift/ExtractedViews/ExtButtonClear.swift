@@ -23,6 +23,6 @@ struct ExtButtonClear : View {
             temp = ""
             
         })
-        .buttonStyle(GrowingButton())
+        .buttonStyle(GrowingButton(width: 55, height: 55))
     }
 }

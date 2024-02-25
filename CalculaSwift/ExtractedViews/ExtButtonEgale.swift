@@ -15,34 +15,42 @@ struct ExtButtonEgale : View {
     
     var body: some View {
         Button("=",action:{
-            listnb.append(Double(temp) ?? 0.0)
-            if listnb.count-1 != listop.count {
-                temp = "pas assez de nombre"
-            }else {
-                string+=temp+"="
-                var total :Double = listnb[0]
-                for indice in (1...listnb.count-1) {
-                    switch listop[indice-1] {
-                    case "+" : total+=listnb[indice]
-                    case "-" : total-=listnb[indice]
-                    case "x" : total*=listnb[indice]
-                    case "÷" :
-                        if listnb[indice] == 0.0 {
-                            string = "division par zero"
-                        }else {
-                            total/=listnb[indice]
+            // Test et conversion des virgules
+            if temp != "" {
+                if isValidDouble(num: temp) {
+                    string += validDoubleToString(num: temp) + "="
+                    listnb.append(Double(temp) ?? 0.0)
+                    
+                    if listnb.count - 1 != listop.count {
+                        temp = "pas assez de nombres"
+                    } else {
+                        var total: Double = listnb[0]
+                        
+                        for indice in (1...listnb.count-1) {
+                            switch listop[indice-1] {
+                            case "+" : total += listnb[indice]
+                            case "-" : total -= listnb[indice]
+                            case "x" : total *= listnb[indice]
+                            case "÷" :
+                                if listnb[indice] == 0.0 {
+                                    string = "division par zéro"
+                                } else {
+                                    total /= listnb[indice]
+                                }
+                            default : total = 0.0
+                            }
                         }
-                    default : total = 0.0
+                        
+                        listnb = []
+                        listop = []
+                        temp = floor(total) == total ? String(Int(total)) : String(total)
                     }
+                } else {
+                    temp = "nombre invalide"
                 }
-                listnb = []
-                listop = []
-                temp = floor(total) == total ? String(Int(total)) : String(total)
             }
-            
-        } )
-        .buttonStyle(GrowingButtonEgale())
-        
+        })
+        .buttonStyle(GrowingButton(width: 115, height: 55))
     }
 }
 

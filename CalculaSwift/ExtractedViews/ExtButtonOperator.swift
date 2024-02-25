@@ -17,12 +17,23 @@ struct ExtButtonOperator : View {
     @Binding var listop : [String]
     var body: some View {
         Button(operatorValue,action:{
-            listnb.append(Double(temp) ?? 0.0)
-            listop.append(operatorValue)
-            string+=temp+operatorValue
-            temp = ""
-            
+            if temp != "" {
+                if isValidDouble(num: temp) {
+                    listnb.append(Double(temp) ?? 0.0)
+                    listop.append(operatorValue)
+                    string+=validDoubleToString(num :temp)+operatorValue
+                    temp = ""
+                }else {
+                    temp = "nombre invalide"
+                }
+            }else {
+                if string != "" {
+                    string =  String(string.dropLast())
+                    string+=operatorValue
+                    listop != [] ? listop[listop.count-1] = operatorValue : nil
+                }
+            }
         })
-        .buttonStyle(GrowingButton())
+        .buttonStyle(GrowingButton(width: 55, height: 55))
     }
 }

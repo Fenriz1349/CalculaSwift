@@ -37,8 +37,8 @@ struct ContentView: View {
                     }
                 }
                 .padding(.bottom, 30)
-    //            Text("liste nb :"+listNumbers.map{String($0)}.joined(separator: ","))
-    //            Text("liste op :"+listOperators.map{String($0)}.joined(separator: ","))
+//                Text("liste nb :"+listNumbers.map{String($0)}.joined(separator: ","))
+//                Text("liste op :"+listOperators.map{String($0)}.joined(separator: ","))
                 HStack{
                     ExtButtonClear(string: $stringCalcul, temp: $tempNumberString, listnb: $listNumbers, listop: $listOperators)
                     ExtButtonErase(temp: $tempNumberString)

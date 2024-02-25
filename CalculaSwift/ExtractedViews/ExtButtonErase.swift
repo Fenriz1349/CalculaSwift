@@ -17,6 +17,6 @@ struct ExtButtonErase : View {
             temp = String(temp.dropLast())
             
         })
-        .buttonStyle(GrowingButton())
+        .buttonStyle(GrowingButton(width: 55, height: 55))
     }
 }

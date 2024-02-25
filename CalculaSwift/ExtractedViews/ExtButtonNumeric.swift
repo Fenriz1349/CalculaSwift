@@ -24,7 +24,7 @@ struct ExtButtonNumeric : View {
                 temp += numberValue == "," ? "." : numberValue
             }
         })
-        .buttonStyle(GrowingButton())
+        .buttonStyle(GrowingButton(width: 55, height: 55))
     }
 }
 
