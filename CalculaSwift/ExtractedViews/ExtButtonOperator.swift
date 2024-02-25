@@ -17,7 +17,7 @@ struct ExtButtonOperator : View {
     @Binding var listop : [String]
     var body: some View {
         Button(operatorValue,action:{
-            if temp != "" {
+            if temp != "" || string != ""{
                 if isValidDouble(num: temp) {
                     listnb.append(Double(temp) ?? 0.0)
                     listop.append(operatorValue)

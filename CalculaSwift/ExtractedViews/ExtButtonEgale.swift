@@ -16,7 +16,7 @@ struct ExtButtonEgale : View {
     var body: some View {
         Button("=",action:{
             // Test et conversion des virgules
-            if temp != "" {
+            if string != "" || temp != "" {
                 if isValidDouble(num: temp) {
                     string += validDoubleToString(num: temp) + "="
                     listnb.append(Double(temp) ?? 0.0)
@@ -40,10 +40,9 @@ struct ExtButtonEgale : View {
                             default : total = 0.0
                             }
                         }
-                        
                         listnb = []
                         listop = []
-                        temp = floor(total) == total ? String(Int(total)) : String(total)
+                        temp = goodDoubleFormat(number: total)
                     }
                 } else {
                     temp = "nombre invalide"

@@ -44,3 +44,20 @@ func validDoubleToString (num : String) ->String{
         return num
     }
 }
+//fonction pour renvoyer un Int si le nombre n'as rien après la virgule, et sinon au maximum 5 chiffres après la virgulkes
+func goodDoubleFormat (number:Double) ->String{
+    if number.truncatingRemainder(dividingBy: 1) == 0 {
+        return  String(Int(number))
+    } else if number * 10 - Double(Int(number * 10)) == 0 {
+        return String(format: "%.1f", number)
+    }else if number * 100 - Double(Int(number * 100)) == 0 {
+        return String(format: "%.2f", number)
+    }else if number * 1000 - Double(Int(number * 1000)) == 0 {
+        return String(format: "%.3f", number)
+    }else if number * 10000 - Double(Int(number * 10000)) == 0 {
+        return String(format: "%.4f", number)
+    }else{
+        return String(format: "%.5f", number)
+    }
+}
+   
